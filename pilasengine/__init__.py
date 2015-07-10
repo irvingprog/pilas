@@ -41,7 +41,7 @@ import datos
 
 import widget
 
-VERSION = "0.90.40"
+VERSION = "0.90.39"
 
 
 def handler(signum, frame):
@@ -236,16 +236,6 @@ class Pilas(object):
         self._x = x
         self._y = y
 
-    def esta_en_pantalla_completa(self):
-        return self.widget.pantalla_completa
-
-    def ancho(self):
-        return self.widget.width()
-
-    def alto(self):
-        return self.widget.height()
-
-
     def reiniciar_si_cambia(self, archivo):
         """Regista un archivo para hacer livecoding.
 
@@ -313,6 +303,9 @@ class Pilas(object):
 
     def cambiar_escena(self, escena):
         self.definir_escena(escena)
+
+    def habilitar_persistencia(self, backend, nombre_archivo):
+        self.backend_persistencia = backend(nombre_archivo)
 
     def definir_iniciado_desde_asistente(self, estado):
         self._iniciado_desde_asistente = estado
